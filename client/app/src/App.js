@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react'
 import { io } from 'socket.io-client'
 
 const Canvas = ({posInput, setPosInput, setVoteViewId, votes, ...args}) => {
-  console.log(votes)
   const canvasRef = useRef()
 
   useEffect(() => {
@@ -72,7 +71,6 @@ const Canvas = ({posInput, setPosInput, setVoteViewId, votes, ...args}) => {
     }
 
     let ptPos = worldToScreen(posInput)
-    console.log(mouse, ptPos)
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -119,14 +117,12 @@ const App = () => {
 
   useEffect(() => {
     if(roomPath.length > 0 && (socket == null || socket.io.opts.path !== roomPath)) {
-      console.log('setting up socket', socket)
       const soc = io.connect(process.env.REACT_APP_API_URL, {
         transports: ['websocket'],
         path: roomPath
       })      
 
       soc.on('message', (txt) => {
-        console.log('received vote', txt)
         setRoomData(old => { 
           const vote = JSON.parse(txt)
           return {votes: {...old.votes, ...mapifyVotes([vote])}}
@@ -174,7 +170,6 @@ const App = () => {
       position: posInput
     }
     
-    console.log('tryna send vote', vote)
     socket.emit('message', JSON.stringify(vote))
 
     setNameInput('Anonymous')
@@ -208,13 +203,6 @@ const App = () => {
         <p>{roomData.votes[voteViewId].author} | {roomData.votes[voteViewId].comment} | {roomData.votes[voteViewId].position[0]}, {roomData.votes[voteViewId].position[1]}</p> 
         : null
       }
-      {/* <ul>
-        {
-        roomData.votes.map(vote => 
-          <li key={Math.random().toString()}>{vote.author} | {vote.comment} | {vote.position}</li>
-        )
-        }
-      </ul> */}
     </div>
   );
 }
