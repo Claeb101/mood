@@ -20,7 +20,7 @@ jobs:
       working-directory: client/app
     - name: Set-up Environment
       env:
-        API_URL: https://the-mood-meter.herokuapp.com/
+        API_URL: https://the-mood-meter.herokuapp.com
       run: |
         touch .env
         echo "REACT_APP_API_URL=\"$API_URL\"" >> .env
