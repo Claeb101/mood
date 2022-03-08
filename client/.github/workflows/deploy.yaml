@@ -1,0 +1,35 @@
+name: Build & Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Packages
+      run: npm install
+      working-directory: app
+    - name: Set-up Environment
+      env:
+        REACT_APP_API_URL='https://the-mood-meter.herokuapp.com/'
+      run: |
+        touch .env
+        echo "REACT_APP_API_URL=${REACT_APP_API_URL}" >> .env
+      working-directory: app
+    - name: Build page
+      run: npm run build
+      working-directory: app
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./app/build

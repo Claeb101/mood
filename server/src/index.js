@@ -57,4 +57,9 @@ app.post('/room', (req, res) => {
   })
 })
 
-server.listen(8080, () => console.log('listening on http://localhost:8080'))
+app.get('/', (req, res) => {
+  res.send('Welcome to the Mood Meter API!')
+})
+
+const PORT = process.env.PORT || 8080
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`))
