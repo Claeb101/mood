@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState, useEffect, useReducer, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { io } from 'socket.io-client'
 
 const Canvas = ({posInput, setPosInput, setVoteViewId, votes, ...args}) => {

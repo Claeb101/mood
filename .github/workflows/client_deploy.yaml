@@ -23,7 +23,7 @@ jobs:
         API_URL: https://the-mood-meter.herokuapp.com/
       run: |
         touch .env
-        echo "REACT_APP_API_URL=$API_URL" >> .env
+        echo "REACT_APP_API_URL=\"$API_URL\"" >> .env
         cat .env
       working-directory: client/app
     - name: Build page
