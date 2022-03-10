@@ -27,10 +27,15 @@ const Join = ({onJoin}) => {
   }
 
   return (
-    <div className="app">
-      <h3>Join Room</h3>
-      <input value={joinCodeInput} onInput={e => setJoinCodeInput(e.target.value)}/>
-      <button onClick={() => {joinRoom(joinCodeInput)}}>Join</button>
+    <div className=" m-auto w-72 bg-black bg-opacity-20 p-4 text-white">
+      <input
+        value={joinCodeInput} onInput={e => setJoinCodeInput(e.target.value)} placeholder='Room PIN'
+        className="block border-2 border-blue rounded-md w-full h-10 bg-blue/50 p-1 text-center font-sans font-bold text-white placeholder:text-white focus:placeholder-transparent"
+      />
+      <button
+        onClick={() => {joinRoom(joinCodeInput)}}
+        className="mt-2 w-full h-10 border-2 border-black/25 rounded-md bg-green text-center text-white font-sans font-bold"
+      >Enter</button>
     </div>
   );
 }

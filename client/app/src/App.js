@@ -1,21 +1,25 @@
 import { useState } from 'react';
-import './App.scss'
 import Join from './components/Join';
 import View from './components/View';
 import Vote from './components/Vote';
+import Logo from './components/Logo';
 
 const App = () => {
   const [roomSocket, setRoomSocket] = useState(null)
   const [vote, setVote] = useState(null)
 
   return (
-    <div className='App'>
+    <div className='app min-h-screen bg-blue-darkest flex flex-col justify-between items-center'>
+      <div className='w-full h-full bg-gradient-ra'/>
       {
         roomSocket == null ? 
-        <Join onJoin={(socket) => {
-          setRoomSocket(socket)
-          setVote(null)
-        }}/>
+        <div className='my-auto'>
+          <div className='mb-7'><Logo className="mb-7"/></div>
+          <Join onJoin={(socket) => {
+            setRoomSocket(socket)
+            setVote(null)
+          }}/>
+        </div>
         : null
       }
       {
@@ -28,6 +32,8 @@ const App = () => {
         <View socket={roomSocket}/>
         : null
       }
+              
+      <p className='m-4 w-3/4 text-center text-white font-sans font-normal'>A simple, real-time solution for <b className='font-bold'>mood</b> check-ins</p>
     </div>
   );
 }
