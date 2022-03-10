@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/mood-meter/static/css/main.2f828b85.css",
-    "main.js": "/mood-meter/static/js/main.ff91fea6.js",
+    "main.css": "/mood-meter/static/css/main.b3cb2b9a.css",
+    "main.js": "/mood-meter/static/js/main.6f421bbc.js",
     "static/js/787.c1112931.chunk.js": "/mood-meter/static/js/787.c1112931.chunk.js",
+    "static/media/Montserrat-Bold.ttf": "/mood-meter/static/media/Montserrat-Bold.63fae500fdcf19ce83d4.ttf",
+    "static/media/Montserrat-Regular.ttf": "/mood-meter/static/media/Montserrat-Regular.ac98a5f5ca71180fe293.ttf",
+    "static/media/logo_o1.svg": "/mood-meter/static/media/logo_o1.a6cc47ce1b533d58ae91cdd0922de653.svg",
+    "static/media/logo_o2.svg": "/mood-meter/static/media/logo_o2.3b2bb5f30368878c98ce5a106dd7e34e.svg",
     "index.html": "/mood-meter/index.html",
-    "main.2f828b85.css.map": "/mood-meter/static/css/main.2f828b85.css.map",
-    "main.ff91fea6.js.map": "/mood-meter/static/js/main.ff91fea6.js.map",
+    "main.b3cb2b9a.css.map": "/mood-meter/static/css/main.b3cb2b9a.css.map",
+    "main.6f421bbc.js.map": "/mood-meter/static/js/main.6f421bbc.js.map",
     "787.c1112931.chunk.js.map": "/mood-meter/static/js/787.c1112931.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2f828b85.css",
-    "static/js/main.ff91fea6.js"
+    "static/css/main.b3cb2b9a.css",
+    "static/js/main.6f421bbc.js"
   ]
 }
