@@ -14,9 +14,8 @@ const GraphDisplay = ({posInput, setPosInput, setNearestVoteId, votes, res, ...a
       }
   
       const onMouseMove = (e) => {
-        let cRect = canvas.getBoundingClientRect()
-        mouse.pos = [e.clientX - cRect.left, e.clientY - cRect.top]
-  
+        let rect = canvas.getBoundingClientRect()
+        mouse.pos = [(e.clientX - rect.left)*canvas.width/rect.width, (e.clientY - rect.top)*canvas.height/rect.height]
         if(mouse.clicked){
           let worldMousePos = screenToWorld(mouse.pos)
           let min = ['', Infinity]
@@ -53,7 +52,7 @@ const GraphDisplay = ({posInput, setPosInput, setNearestVoteId, votes, res, ...a
       }
   
       const init = () => {
-        canvas.style.cursor = mouse.clicked ? '' : 'none'
+        canvas.style.cursor = mouse.clicked|true ? '' : 'none'
     
         canvas.addEventListener('mousemove', onMouseMove)
         canvas.addEventListener('mouseup', onMouseUp)
@@ -67,17 +66,23 @@ const GraphDisplay = ({posInput, setPosInput, setNearestVoteId, votes, res, ...a
         ctx.fill()
         ctx.closePath()
       }
+
+      const scale = Math.min(canvas.width, canvas.height)
+      const drawVotePoint = (pos, owner=false) => {
+        drawCircle(pos, scale*0.015, '#000000')
+        // drawCircle(pos, scale*0.01, '#ffffff')
+      }
   
       let ptPos = worldToScreen(posInput)
       const draw = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
   
         for(const vote of Object.values(votes)){
-          drawCircle(worldToScreen(vote.position), 5, '#ff0000')
+          drawVotePoint(worldToScreen(vote.position))
         }
   
         if(!mouse.clicked) ptPos = mouse.pos
-        drawCircle(ptPos, 5, '#00ff00')
+        drawVotePoint(ptPos, true)
       }
   
       const render = () => {
@@ -96,7 +101,17 @@ const GraphDisplay = ({posInput, setPosInput, setNearestVoteId, votes, res, ...a
       }
     }, [votes, posInput, setPosInput, setNearestVoteId])
   
-    return <canvas ref={canvasRef} width={res.width | 600} height={res.height | 600} {...args} />
+    return (
+      <canvas
+        ref={canvasRef}
+        width={res.width | 600}
+        height={res.height | 600}
+        style={{
+          background: "linear-gradient(180deg, rgba(255, 0, 0, 0.5) 0%, rgba(255, 255, 0, 0.5) 100%), linear-gradient(90deg, #0000FF 0%, #00FFFF 100%)"
+        }}
+        {...args} 
+      />
+    );
   }
 
 export default GraphDisplay

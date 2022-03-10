@@ -27,9 +27,17 @@ const Join = ({onJoin}) => {
   }
 
   return (
-    <div className=" m-auto w-72 bg-black bg-opacity-20 p-4 text-white">
+    <div className="m-auto w-72 bg-black bg-opacity-20 p-4 text-white">
       <input
-        value={joinCodeInput} onInput={e => setJoinCodeInput(e.target.value)} placeholder='Room PIN'
+        value={joinCodeInput}
+        onInput={e => setJoinCodeInput(e.target.value)}
+        onKeyPress={(ev) => {
+          if (ev.key === "Enter") {
+            ev.preventDefault();
+            joinRoom(joinCodeInput)
+          }
+        }}
+        placeholder='Room PIN'
         className="block border-2 border-blue rounded-md w-full h-10 bg-blue/50 p-1 text-center font-sans font-bold text-white placeholder:text-white focus:placeholder-transparent"
       />
       <button

@@ -14,6 +14,20 @@
     src: url("./assets/fonts/Montserrat/static/Montserrat-Bold.ttf")
 }
 
+@font-face {
+    font-family: Montserrat;
+    font-weight: 600;
+    src: url("./assets/fonts/Montserrat/static/Montserrat-SemiBold.ttf")
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 300;
+    font-style: italic;
+    src: url("./assets/fonts/Montserrat/static/Montserrat-ThinItalic.ttf")
+}
+
+
 * {
     outline: none;
     box-sizing: border-box;

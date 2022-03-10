@@ -40,18 +40,35 @@ const View = ({socket}) => {
         })
     })
 
+    const posToTxt = (pos) => {
+        const numToTxt = (n) => {
+            return (n >= 0 ? '+' : '-') + String(Math.abs(n)).substring(0, 4)
+        }
+        return `(${numToTxt(pos[0])}, ${numToTxt(pos[1])})`
+    }
+
     return (
-        <div>
+        <>
+        <div className="m-auto w-72 bg-black bg-opacity-20 p-4 text-white">
             <GraphDisplay
                 posInput={[0, 0]}
                 setPosInput={() => console.log('not supposed to happen')}
                 setNearestVoteId={(id) => setFocusedVote(roomData.votes[id])}
                 votes={roomData ? roomData.votes : []} res={{ width: 600, height: 600 }}
+                className="m-auto w-full aspect-square rounded-md"
             />
-            { focusedVote ? <p>{focusedVote.author} | {focusedVote.comment} | {focusedVote.position} </p> : null }
         </div>
-        
+        { focusedVote ?
+            <div className="mt-4 mx-auto w-72 bg-black bg-opacity-20 p-4 text-white">
+                <p className="font-sans font-semibold">{focusedVote.author} is feeling {posToTxt(focusedVote.position)} {focusedVote.comment.length > 0 ? 'and commented:' : ''}</p>
+                {focusedVote.comment.length > 0 ? 
+                <p className="font-sans font-light italic">{focusedVote.comment}</p>
+                : null}
+                
+            </div>
+        : null }
+        </>
     );
 }
-
+// Arthur is feeling (+5.2, -3.8) and commented:
 export default View
