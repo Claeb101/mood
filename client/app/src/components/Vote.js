@@ -18,7 +18,7 @@ const Vote = ({socket, onVote}) => {
     }
 
     return (
-        <div className="m-auto w-72 bg-black bg-opacity-20 p-4 text-white">
+        <div className="m-auto w-80 bg-black bg-opacity-20 px-12 py-4 text-white">
             <GraphDisplay
                 posInput={posInput} setPosInput={setPosInput} votes={[]} res={{ width: 800, height: 800 }}
                 className="m-auto w-full aspect-square rounded-md"

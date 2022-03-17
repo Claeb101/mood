@@ -9,7 +9,7 @@ const App = () => {
   const [vote, setVote] = useState(null)
 
   return (
-    <div className='app min-h-screen bg-blue-darkest flex flex-col justify-between items-center'>
+    <div className='app min-h-screen bg-blue-dark flex flex-col justify-between items-center'>
       <div className='w-full h-full'/>
         <div className='my-auto'>
           <div className='mb-7'><Logo className=""/></div>
@@ -29,7 +29,7 @@ const App = () => {
           }      
           {
             roomSocket != null && vote != null ?
-            <View socket={roomSocket}/>
+            <View socket={roomSocket} personalVote={vote}/>
             : null
           }
       </div>
