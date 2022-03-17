@@ -34,7 +34,8 @@ const App = () => {
           }
       </div>
   
-      <p className='m-4 w-3/4 text-center text-white font-sans font-normal'>A simple, real-time solution for <b className='font-bold'>mood</b> check-ins</p>
+      <p className='w-3/4 text-center text-white font-sans font-normal'>A simple, real-time solution for <b className='font-bold'>mood</b> check-ins</p>
+      <p className='mt-2 mb-4 text-white font-sans text-xs'>Made with ❤️ by Alvan Caleb Arulandu</p>
     </div>
   );
 }
